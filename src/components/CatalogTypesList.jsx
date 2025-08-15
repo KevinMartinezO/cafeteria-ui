@@ -70,13 +70,14 @@ const CatalogTypesList = () => {
         }
 
         const hasProducts = item.number_of_products > 0;
-        const action = hasProducts ? 'desactivar' : 'eliminar';
-        const consequence = hasProducts 
-            ? `Este tipo tiene ${item.number_of_products} producto(s) asociado(s). Se desactivará pero mantendrá la integridad de los datos.`
-            : 'Este tipo será eliminado permanentemente del sistema.';
+
+        if (hasProducts) {
+            setError(`No se puede eliminar el tipo "${item.description}" porque está en uso por ${item.number_of_products} producto(s).`);
+            return;
+        }
 
         const confirmed = window.confirm(
-            `¿Estás seguro de ${action} el tipo de catálogo "${item.description}"?\n\n${consequence}\n\n¿Deseas continuar?`
+            `¿Estás seguro de eliminar el tipo de catálogo "${item.description}"?\n\nEste tipo será eliminado permanentemente del sistema.\n\n¿Deseas continuar?`
         );
 
         if (confirmed) {
@@ -84,13 +85,10 @@ const CatalogTypesList = () => {
                 setError('');
                 await catalogTypeService.deactivate(item.id);
                 await loadCatalogTypes();
-                const message = hasProducts 
-                    ? 'Tipo de catálogo desactivado exitosamente'
-                    : 'Tipo de catálogo eliminado exitosamente';
-                setSuccessMessage(message);
+                setSuccessMessage('Tipo de catálogo eliminado exitosamente');
             } catch (error) {
                 console.error('Error al procesar:', error);
-                setError(error.message || `Error al ${action} el tipo de catálogo`);
+                setError(error.message || 'Error al eliminar el tipo de catálogo');
             }
         }
     };
@@ -122,10 +120,19 @@ const CatalogTypesList = () => {
     return (
         <Layout>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold text-gray-800">Tipos de Catálogo</h1>
+                <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#d2b48c] rounded-full flex items-center justify-center shadow">
+                        <img
+                            src="https://i.pinimg.com/736x/2a/58/a9/2a58a9c65d07c17aa32b7c0a7bff1861.jpg"
+                            alt="Café"
+                            className="w-10 h-10 rounded-full object-cover"
+                        />
+                    </div>
+                    <h1 className="text-3xl font-bold text-[#d2b48c]">Tipos de Catálogo</h1>
+                </div>
                 <button
                     onClick={handleCreate}
-                    className="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+                    className="bg-[#d2b48c] hover:bg-[#d2b48c] text-white font-medium py-2 px-4 rounded-md transition-colors"
                 >
                     + Nuevo Tipo
                 </button>

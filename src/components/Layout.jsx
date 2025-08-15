@@ -24,16 +24,25 @@ const Layout = ({ children }) => {
     }
 
     return (
-        <div className="min-h-screen bg-green-50">
-            <div className="bg-white shadow-lg">
+        <div className="min-h-screen bg-[#6f4e37]">
+            <div className="bg-[#fff8e7] shadow-lg">
                 <div className="max-w-6xl mx-auto px-4">
-                    <div className="flex justify-between items-center py-4 border-b border-gray-200">
-                        <div>
-                            <h1 className="text-2xl font-bold text-gray-800">¡Bienvenido a la Dulcería! 🍭</h1>
-                            <p className="text-gray-600">Hola {`${user.firstname} ${user.lastname}`}</p>
+                    <div className="flex justify-between items-center py-4 border-b border-[#d2b48c]">
+                        <div className="flex items-center space-x-4">
+                            <div className="w-14 h-14 bg-[#d2b48c] rounded-full flex items-center justify-center shadow">
+                                <img
+                                    src="https://i.pinimg.com/736x/2a/58/a9/2a58a9c65d07c17aa32b7c0a7bff1861.jpg"
+                                    alt="Café"
+                                    className="w-12 h-12 rounded-full object-cover"
+                                />
+                            </div>
+                            <div>
+                                <h1 className="text-2xl font-bold text-[#6f4e37]">Cafeteria Golden</h1>
+                                <p className="text-[#8b6f47]">Hola {`${user.firstname} ${user.lastname}`}</p>
+                            </div>
                         </div>
                         <button 
-                            className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors"
+                            className="bg-[#6f4e37] text-white px-4 py-2 rounded-md hover:bg-[#8b6f47] transition-colors"
                             onClick={handleLogout}
                         >
                             Cerrar Sesión
@@ -44,7 +53,7 @@ const Layout = ({ children }) => {
                         <ul className="flex space-x-8">
                             <li>
                                 <button 
-                                    className="flex items-center px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors font-medium"
+                                    className="flex items-center px-4 py-2 text-[#6f4e37] hover:text-[#8b6f47] hover:bg-[#fff8e7] rounded-md transition-colors font-medium"
                                     onClick={() => navigate('/dashboard')}
                                 >
                                     <span className="mr-2">🏠</span>
@@ -53,7 +62,7 @@ const Layout = ({ children }) => {
                             </li>
                             <li>
                                 <button 
-                                    className="flex items-center px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors font-medium"
+                                    className="flex items-center px-4 py-2 text-[#6f4e37] hover:text-[#8b6f47] hover:bg-[#fff8e7] rounded-md transition-colors font-medium"
                                     onClick={() => navigate('/catalog-types')}
                                 >
                                     <span className="mr-2">🏷️</span>
@@ -62,7 +71,7 @@ const Layout = ({ children }) => {
                             </li>
                             <li>
                                 <button 
-                                    className="flex items-center px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-md transition-colors font-medium"
+                                    className="flex items-center px-4 py-2 text-[#6f4e37] hover:text-[#8b6f47] hover:bg-[#fff8e7] rounded-md transition-colors font-medium"
                                     onClick={() => navigate('/catalogs')}
                                 >
                                     <span className="mr-2">📋</span>

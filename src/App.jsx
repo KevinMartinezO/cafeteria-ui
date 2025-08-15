@@ -7,6 +7,7 @@ import {
   Navigate
 } from 'react-router-dom'
 
+
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
@@ -17,7 +18,10 @@ import SignupScreen from './components/SignupScreen'
 import CatalogTypesList from './components/CatalogTypesList'
 import CatalogsList from './components/CatalogsList'
 
+
+
 function App() {
+
 
   return (
     <AuthProvider>

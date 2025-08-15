@@ -141,10 +141,19 @@ const CatalogsList = () => {
     return (
         <Layout>
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold text-gray-800">Catálogos</h1>
+                <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#d2b48c] rounded-full flex items-center justify-center shadow">
+                        <img
+                            src="https://i.pinimg.com/736x/2a/58/a9/2a58a9c65d07c17aa32b7c0a7bff1861.jpg"
+                            alt="Café"
+                            className="w-10 h-10 rounded-full object-cover"
+                        />
+                    </div>
+                    <h1 className="text-3xl font-bold text-[#d2b48c]">Catálogos</h1>
+                </div>
                 <button
                     onClick={handleCreate}
-                    className="bg-pink-500 hover:bg-pink-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+                    className="bg-[#d2b48c] hover:bg-[#d2b48c] text-white font-medium py-2 px-4 rounded-md transition-colors"
                 >
                     + Nuevo Catálogo
                 </button>
